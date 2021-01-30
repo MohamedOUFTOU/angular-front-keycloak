@@ -1,0 +1,36 @@
+<div class="container" *ngIf="loaded">
+  <div class="col-lg-9 col-lg-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">Products List</div>
+      <div class="panel-body">
+        <div class="form-group" style="justify-content: right">
+          <input type="text" class="form-control" id="name" placeholder="Enter the product name..."  (input)="onSearch($event)">
+        </div>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let p of products">
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.price }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="onDelete(p.id)"><span class="glyphicon glyphicon-erase"></span></button>
+              <button class="btn btn-info" (click)="onEdit(p)"><span class="glyphicon glyphicon-edit"></span></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="pagination">
+          <li *ngFor="let _ of pageIndexes;index as i" [className]="i==pageIndex?'active':''"><a (click)="onChangePage(i)">{{ i+1 }}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

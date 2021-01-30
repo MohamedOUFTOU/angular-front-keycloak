@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading" *ngIf="isEditing">Modify Costumer</div>
+      <div class="panel-heading" *ngIf="!isEditing">Add Costumer</div>
+      <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <label for="name">Costumer Name:</label>
+            <input type="text" [(ngModel)]="costumerName" class="form-control" id="name" name="costumerName" required="true">
+          </div>
+          <div class="form-group">
+            <label for="email">Costumer Price:</label>
+            <input type="email" [(ngModel)]="costumerEmail" class="form-control" id="email" name="costumerEmail" required="true">
+          </div>
+          <button *ngIf="!isEditing" type="submit" class="btn btn-info" (click)="onAddCostumer()">Add Costumer</button>
+          <button *ngIf="isEditing" type="submit" class="btn btn-success" (click)="onModifyCostumer()">Modify Costumer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

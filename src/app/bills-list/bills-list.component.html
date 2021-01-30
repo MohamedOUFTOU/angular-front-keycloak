@@ -1,0 +1,34 @@
+<div class="container" *ngIf="loaded">
+  <div class="col-lg-9 col-lg-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">Bills List</div>
+      <div class="panel-body">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Costumer Name</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let bill of bills">
+            <td>{{ bill.id }}</td>
+            <td>{{ bill.billingDate | date: 'yyyy/MM/dd HH:mm' }}</td>
+            <td>{{ bill.costumer?.name }}</td>
+            <td>
+              <button class="btn btn-danger"><span class="glyphicon glyphicon-erase"></span></button>
+              <button class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="pagination">
+          <li *ngFor="let _ of pageIndexes;index as i" [className]="i==pageIndex?'active':''"><a (click)="onChangePage(i)">{{ i+1 }}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
